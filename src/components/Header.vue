@@ -28,19 +28,28 @@ export default {
             return this.$store.state.allowedTime
         },
         countDown() {
-            if (this.allowedTime > 0 && this.isTimeAllowed) {
-                setTimeout(() => {
-                    this.$store.commit("updateTime", -1)
-                    if (this.allowedTime === 0 && this.chance > 0) {
-                        this.$store.commit("updateChance", -1)
-                        this.$store.commit("resetTime")
-                    }
-                }, 1000)
+            if (this.isTimeAllowed) {
+                if (this.allowedTime > 0) {
+                    const timer = setTimeout(() => {
+                        this.$store.commit("updateTime", -1)
+                        if (this.allowedTime === 0) {
+                            this.$store.commit("updateChance", -1)
+                            if (this.chance > 0) {
+                                this.$store.commit("resetTime")
+                                clearTimeout(timer)
+                                
+                            } else {
+                                this.$store.commit("updateIsFinished", true)
+                                this.$store.commit("updateVictory", false)
+                                clearTimeout(timer)
+                            }
 
-            } else if (this.allowedTime === 0 && this.chance === 0) {
-                this.$store.commit("updateIsFinished", true)
-                this.$store.commit("updateVictory", false)
+                        }
+                    }, 1000)
+                }
+
             }
+
             return this.allowedTime
         },
     },
