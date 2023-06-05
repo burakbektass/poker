@@ -64,19 +64,9 @@ export default {
     watch: {
 
         cardNumbers() {
-            console.log(this.cardNumbers)
             this.cardOptions = this.cards.slice(0, this.cardNumbers)
-            // if(this.cardNumbers == 4){
-            //     this.cards.slice(0)
-            // }
+            
         },
-        //  winnerCard() {
-        //     let winner = this.$store.state.listedCards.find(card => card.name === this.winnerCard)
-        //     this.$store.commit("updateWinnerCard", winner)
-        // },
-        //     checked() {
-        //         this.$store.commit("toggleTime", this.checked)
-        //     }
     },
     computed: {
         listedCards() {

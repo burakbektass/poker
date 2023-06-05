@@ -19,7 +19,7 @@ export const store = new Vuex.Store({
     cardNumbers: 4,
     chances: { 4: 1, 6: 2, 8: 3 },
     chance: 1,
-    allowedTime: 8, //5-120 sn ya da süre siniri yok
+    allowedTime: 8,
     winnerCard: { id: 1, name: "Kupa Kizi", isOpened: false, img: "src/assets/kupakizi.png" },
     isTimeAllowed: true,
     isVictory: false,
@@ -55,7 +55,7 @@ export const store = new Vuex.Store({
     updateVictory(state, payload) {
       state.isVictory = payload
     },
-    resetTime(state,payload){
+    resetTime(state, payload) {
       state.allowedTime = 8
     }
 

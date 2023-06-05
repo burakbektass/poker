@@ -37,7 +37,6 @@ export default {
                     this.$store.commit("updateIsFinished", true)
                     this.$store.commit("updateVictory", true)
                     this.mixedCards.forEach(card => card.isOpened = true)
-                    // this.mixedCards[index].isOpened = false
                 }, 1000)
             } else {
                 setTimeout(() => {
