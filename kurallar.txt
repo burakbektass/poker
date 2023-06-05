@@ -1,0 +1,35 @@
+Kurallar
+---
+
+1. oyun 4, 6 yada 8 kart ile oynanabilir 
+2. oyundaki kartlar şu şekilde olmalı ( image olacak )
+  - Kupa Kızı
+  - Maça Kızı
+  - Sinek Kızı
+  - Karo Kızı
+  ---------------- 4 kart
+  - Kupa Papazı
+  - Maça Papazı
+  ---------------- 6 kart
+  - Sinek Papazı
+  - Karo Papazı
+  ---------------- 8 kart
+3. oyuncu seçim yaptığında
+  - 1 hakkı gidecek
+  - seçim hakkı kalmadıysa sonuç yazdırılacak
+  - seçim hakkı varsa devam edecek
+4.  süre sınırı varsa
+  - süre aşıldığında 3 numaralı işlem uygulanacak
+5. ayarlar ( değişikliklerin aktif olması için kaydet olacak )
+  - oyun kart sayısı( 4 - 6 - 8 )
+    - oyun 4 kart ile oynanırsa en fazla 1 kez seçme hakkı olur
+    - oyun 6 kart ile oynanırsa en fazla 2 kez seçme hakkı olur
+    - oyun 8 kart ile oynanırsa en fazla 3 kez seçme hakkı olur
+  - oyunu kazanacak kart ( varsayılan : Kupa Kızı ) ( kart sayısına göre kazanan kart değişebilir )
+  - bekleme süresi (5 - 120 sn arası olabilir)
+  - süre sınırı uygulanacakmı diye bir ayar olacak . evet seçilirse süre sınırı uygulanacak
+  - her seçimden sonra süreyi baştan başlatacakmı . evet ise her seçim sonrasında kalan hakkı varsa süreyi baştan başlatacak
+6. Başlangıçta oyun kartlarının arka yüzü görünecek ve seçim yapıldığında ön yüze dönecek
+7. oyun sonunda kaybedersem tüm kartlar açılacak. Kazanırsam tüm kartların açılmasına gerek yok
+8. açılan kartı tekrar açıp/kapatamazsınız
+9. oyun her başladığında kartlar rastgele şekilde dağıtılacak
