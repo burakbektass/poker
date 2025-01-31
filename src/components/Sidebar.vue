@@ -3,9 +3,9 @@
         <h1>
             <div class="bar" v-if="collapsed">
                 <div class="bar-el">
-                    Kart Sayisi: &nbsp;&nbsp;&nbsp;
+                    Number of Cards: &nbsp;&nbsp;&nbsp;
                     <select class="select" v-model="cardNumbers">
-                        <option disabled value="">Adet Seçin</option>
+                        <option disabled value="">Select Amount</option>
                         <option>4</option>
                         <option>6</option>
                         <option>8</option>
@@ -13,27 +13,25 @@
                 </div>
                 <br>
                 <div class="bar-el">
-                    Kazanan Kart:
+                    Winning Card:
                     <select class="select" v-model="winnerCard">
-                        <option disabled value="">Kart Seçin</option>
+                        <option disabled value="">Select Card</option>
                         <option v-for="card in cardOptions" :key="card.id">{{ card.name }}</option>
                     </select>
                 </div>
                 <br>
                 <div class="bar-el-time">
-                    Süreli Oyun:
+                    Timed Game:
                     <input type="checkbox" id="checkbox" v-model="checked">
                 </div>
                 <br>
-                <button class="bar-el-btn" @click="saveInfos">Kaydet</button>
-
+                <button class="bar-el-btn" @click="saveInfos">Save</button>
             </div>
         </h1>
 
         <span class="collapse-icon" @click="toggleSidebar">
-            <p>Ayarlar</p>
+            <p>Settings</p>
         </span>
-
     </div>
 </template>
 <script>

@@ -1,0 +1,35 @@
+Rules
+---
+
+1. The game can be played with 4, 6, or 8 cards
+2. The cards in the game should be as follows (with images):
+  - Queen of Hearts
+  - Queen of Spades
+  - Queen of Clubs
+  - Queen of Diamonds
+  ---------------- 4 cards
+  - King of Hearts
+  - King of Spades
+  ---------------- 6 cards
+  - King of Clubs
+  - King of Diamonds
+  ---------------- 8 cards
+3. When player makes a selection:
+  - One chance will be deducted
+  - If no chances remain, the result will be displayed
+  - If chances remain, the game continues
+4. If there is a time limit:
+  - When time expires, rule #3 will be applied
+5. Settings (changes will be active after saving):
+  - Number of game cards (4 - 6 - 8)
+    - With 4 cards: maximum 1 selection chance
+    - With 6 cards: maximum 2 selection chances
+    - With 8 cards: maximum 3 selection chances
+  - Winning card (default: Queen of Hearts) (winning card can change based on number of cards)
+  - Waiting time (can be between 5-120 seconds)
+  - Time limit toggle setting. If enabled, time limit will be applied
+  - Reset timer after each selection setting. If enabled, timer will restart after each selection if chances remain
+6. At the start, cards will show their back face and will flip to front face when selected
+7. If player loses, all cards will be revealed. If player wins, no need to reveal all cards
+8. You cannot flip/unflip an already opened card
+9. Cards will be randomly distributed each time the game starts 

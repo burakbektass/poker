@@ -4,11 +4,11 @@
             <Card v-for="(card, index) in mixCards" :card="card" @click.native="selectCard(card, index)" :key="card.id" />
         </div>
         <div class="btn-save" v-show="!isFinished">
-            <button @click="startGame">Oyunu Başlat</button>&nbsp;
+            <button @click="startGame">Start Game</button>&nbsp;
         </div>
         <div class="result" v-show="isFinished">
             <h2>{{ result }}</h2>
-            <button class="result-btn" @click="startGame">Oyunu Başlat</button>
+            <button class="result-btn" @click="startGame">Start Game</button>
         </div>
     </div>
 </template>
@@ -88,7 +88,7 @@ export default {
             return this.$store.state.isVictory
         },
         result() {
-            return this.isFinished && this.isVictory ? "Oyuncu Kazandı !!" : this.isFinished && !this.isVictory ? "Banka Kazandı !!" : ""
+            return this.isFinished && this.isVictory ? "Player Won!!" : this.isFinished && !this.isVictory ? "Bank Won!!" : ""
         }
     },
 }

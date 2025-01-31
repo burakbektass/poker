@@ -1,9 +1,8 @@
 <template>
     <div class="header">
-        <p>Kalan Seçim Hakkı: {{ chance }}</p>
-        <p>Kazanan Kart: {{ winnerCard }}</p>
-        <p v-if="isTimeAllowed">Kalan Süre: {{ countDown }}</p>
-
+        <p>Remaining Chances: {{ chance }}</p>
+        <p>Winning Card: {{ winnerCard }}</p>
+        <p v-if="isTimeAllowed">Time Left: {{ countDown }}</p>
     </div>
 </template>
 <script>
