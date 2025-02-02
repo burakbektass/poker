@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="area">
-            <Card v-for="(card, index) in mixCards" :card="card" @click.native="selectCard(card, index)" :key="card.id" />
+            <Card v-for="(card, index) in mixCards" :card="card" @click.native="handleCardSelect(card, index)" :key="card.id" />
         </div>
         <div class="btn-save" v-show="!isFinished">
             <button @click="startGame">Start Game</button>&nbsp;
@@ -22,52 +22,61 @@ export default {
         return {
             cards: this.$store.state.cards,
             mixedCards: [],
-            selectedCard: null,
+            selectedCardItem: null,
         }
     },
     methods: {
-        selectCard(card, index) {
-            if (this.selectCard == null)
-                this.selectCard = card
-            this.mixedCards[index].isOpened = true
-            this.$store.commit("updateChance", -1)
-            this.$store.commit("resetTime")
-            if (card.name === this.winnerCard) {
-                setTimeout(() => {
-                    this.$store.commit("updateIsFinished", true)
-                    this.$store.commit("updateVictory", true)
-                    this.mixedCards.forEach(card => card.isOpened = true)
-                }, 1000)
-            } else {
-                setTimeout(() => {
-                    this.mixedCards[index].isOpened = false
-                    if (this.$store.state.chance === 0) {
-                        this.$store.commit("updateIsFinished", true)
-                        this.$store.commit("updateVictory", false)
-                    }
-                }, 1000)
-
+        handleCardSelect(card, index) {
+            if (this.mixedCards[index].isOpened || this.isFinished || this.$store.state.chance <= 0) {
+                return;
             }
-            this.selectCard =null
+
+            if (this.$store.state.chance > 0) {
+                if (this.selectedCardItem === null) {
+                    this.selectedCardItem = card;
+                }
+                this.mixedCards[index].isOpened = true;
+                this.$store.commit("updateChance", -1);
+                this.$store.commit("resetTime");
+                
+                if (card.name === this.winnerCard) {
+                    setTimeout(() => {
+                        this.$store.commit("updateIsFinished", true);
+                        this.$store.commit("updateVictory", true);
+                        this.mixedCards.forEach(card => card.isOpened = true);
+                    }, 1000);
+                } else {
+                    setTimeout(() => {
+                        this.mixedCards[index].isOpened = false;
+                        if (this.$store.state.chance === 0) {
+                            this.$store.commit("updateIsFinished", true);
+                            this.$store.commit("updateVictory", false);
+                        }
+                    }, 1000);
+                }
+                this.selectedCardItem = null;
+            }
         },
         startGame() {
-            this.$store.commit("updateIsFinished", false)
-            this.$store.commit("updateCardNumbers", this.cardNumbers)
-            this.$store.commit("resetTime")
+            this.$store.commit("updateIsFinished", false);
+            this.$store.commit("updateCardNumbers", this.cardNumbers);
+            this.$store.commit("resetTime");
         }
     },
     computed: {
         mixCards() {
-            this.selectedCard = null
+            this.selectedCardItem = null;
             this.mixedCards = [];
             for (let i = 0; i < this.cardNumbers; i++) {
-                let newCard = this.listedCards[Math.floor(Math.random() * this.cardNumbers)]
-                while (this.mixedCards.includes(newCard)) {
-                    newCard = this.listedCards[Math.floor(Math.random() * this.cardNumbers)];
+                let newCard = {...this.listedCards[Math.floor(Math.random() * this.cardNumbers)]};
+                while (this.mixedCards.some(card => card.name === newCard.name)) {
+                    newCard = {...this.listedCards[Math.floor(Math.random() * this.cardNumbers)]};
                 }
-                this.mixedCards.push(newCard)
+                newCard.id = `card_${Date.now()}_${i}`;
+                newCard.isOpened = false;
+                this.mixedCards.push(newCard);
             }
-            return this.mixedCards
+            return this.mixedCards;
         },
         cardNumbers() {
             return this.$store.state.cardNumbers
