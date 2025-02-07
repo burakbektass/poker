@@ -1,11 +1,11 @@
 <template>
-    <div>
+    <div class="card-container">
         <div class="card"
             :style="{ 'background-image': card.isOpened ? 'url(' + card.img + ')' : 'url(' + defaultImg + ')' }">
         </div>
-
     </div>
 </template>
+
 <script>
 export default {
     props: ["card"],
@@ -16,21 +16,38 @@ export default {
     },
 }
 </script>
+
 <style>
-.card {
-    text-align: center;
+.card-container {
     width: 160px;
     height: 230px;
+    display: inline-block;
+    position: relative;
+    perspective: 1000px;
+}
+
+.card {
+    text-align: center;
+    width: 100%;
+    height: 100%;
     border-radius: 10px;
-    margin: 5px;
     background: darkgray;
     background-image: url("../assets/default.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     border: solid 1px #b4afaf;
-    transition: box-shadow .5s;
+    transition: all 0.3s ease;
     font-size: 25px;
     cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 .card p {
@@ -40,10 +57,5 @@ export default {
 .card img {
     width: 100px;
     height: 100px;
-}
-
-.card:hover {
-    box-shadow: 0px 5px 45px #666;
-    transition: box-shadow .5s;
 }
 </style>
