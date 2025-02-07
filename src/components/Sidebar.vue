@@ -68,15 +68,16 @@ export default {
             this.$store.commit("updateWinnerCard", winner)
             this.$store.commit("toggleTime", this.checked)
             this.toggleSidebar()
-
         }
     },
     watch: {
-
         cardNumbers() {
             this.cardOptions = this.cards.slice(0, this.cardNumbers)
             
-        },
+            if (!this.cardOptions.some(card => card.name === this.winnerCard)) {
+                this.winnerCard = this.cardOptions[0].name
+            }
+        }
     },
     computed: {
         listedCards() {
