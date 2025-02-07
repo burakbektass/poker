@@ -105,29 +105,31 @@ export default {
 
 <style>
 .header-container {
-    padding: 20px;
+    padding: 15px;
     background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 60%;
+    margin: 0 auto;
 }
 
 .header {
-    max-width: 1200px;
+    width: 100%;
     margin: 0 auto;
     display: flex;
     justify-content: center;
-    gap: 40px;
+    gap: 30px;
     flex-wrap: wrap;
 }
 
 .header-item {
     background: white;
-    padding: 15px 25px;
+    padding: 12px 20px;
     border-radius: 12px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-width: 160px;
+    min-width: 140px;
     transition: transform 0.2s, box-shadow 0.2s;
 }
 
@@ -152,13 +154,17 @@ export default {
 }
 
 @media (max-width: 768px) {
+    .header-container {
+        width: 90%;
+    }
+
     .header {
-        gap: 20px;
+        gap: 15px;
     }
 
     .header-item {
-        min-width: 140px;
-        padding: 12px 20px;
+        min-width: 120px;
+        padding: 10px 15px;
     }
 
     .label {

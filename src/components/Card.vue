@@ -2,7 +2,6 @@
     <div>
         <div class="card"
             :style="{ 'background-image': card.isOpened ? 'url(' + card.img + ')' : 'url(' + defaultImg + ')' }">
-            <p>{{ card.name }}</p>
         </div>
 
     </div>
