@@ -1,7 +1,13 @@
 <template>
     <div class="card-container">
         <div class="card"
-            :style="{ 'background-image': card.isOpened ? 'url(' + card.img + ')' : 'url(' + defaultImg + ')' }">
+            :style="{ 
+                'background-image': card.isOpened ? 'url(' + card.img + ')' : 'url(' + defaultImg + ')',
+                'background-size': card.isOpened ? 'contain' : 'cover',
+                'background-position': 'center',
+                'background-repeat': 'no-repeat',
+                'background-color': card.isOpened ? 'white' : 'darkgray'
+            }">
         </div>
     </div>
 </template>
@@ -31,10 +37,6 @@ export default {
     width: 100%;
     height: 100%;
     border-radius: 10px;
-    background: darkgray;
-    background-image: url("../assets/default.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
     border: solid 1px #b4afaf;
     transition: all 0.3s ease;
     font-size: 25px;
@@ -43,6 +45,7 @@ export default {
     position: absolute;
     top: 0;
     left: 0;
+    padding: 15px;
 }
 
 .card:hover {

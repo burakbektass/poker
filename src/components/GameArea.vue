@@ -1,6 +1,6 @@
 <template>
     <div class="game-container">
-        <div class="area">
+        <div class="area" :data-cards="cardNumbers">
             <Card v-for="(card, index) in mixCards" 
                   :card="card" 
                   @click.native="handleCardSelect(card, index)" 
@@ -116,15 +116,28 @@ export default {
     position: relative;
     padding: 20px;
     min-height: 60vh;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .area {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    justify-content: center;
+    grid-template-columns: repeat(4, 160px); /* 4'lü grid */
     gap: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
     padding: 20px;
+    margin: 0 auto;
+}
+
+/* 6 kart için */
+.area[data-cards="6"] {
+    grid-template-columns: repeat(3, 160px); /* 3'lü grid */
+}
+
+/* 4 kart için */
+.area[data-cards="4"] {
+    grid-template-columns: repeat(2, 160px); /* 2'li grid */
 }
 
 .card-item {
@@ -226,11 +239,22 @@ export default {
     }
 }
 
+/* Mobil responsive */
 @media (max-width: 768px) {
     .area {
-        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        grid-template-columns: repeat(2, 140px);
         gap: 15px;
         padding: 15px;
+    }
+
+    /* Mobilde 6 kart için */
+    .area[data-cards="6"] {
+        grid-template-columns: repeat(2, 140px);
+    }
+
+    /* Mobilde 4 kart için */
+    .area[data-cards="4"] {
+        grid-template-columns: repeat(2, 140px);
     }
 
     .result-text {
@@ -240,6 +264,18 @@ export default {
     .control-btn {
         padding: 10px 25px;
         font-size: 1rem;
+    }
+}
+
+/* Çok küçük ekranlar için */
+@media (max-width: 360px) {
+    .area {
+        grid-template-columns: repeat(1, 140px);
+    }
+
+    .area[data-cards="6"],
+    .area[data-cards="4"] {
+        grid-template-columns: repeat(1, 140px);
     }
 }
 </style>
