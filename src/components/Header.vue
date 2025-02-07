@@ -1,10 +1,22 @@
 <template>
-    <div class="header">
-        <p>Remaining Chances: {{ chance }}</p>
-        <p>Winning Card: {{ winnerCard }}</p>
-        <p v-if="isTimeAllowed">Time Left: {{ allowedTime }}</p>
+    <div class="header-container">
+        <div class="header">
+            <div class="header-item">
+                <span class="label">Remaining Chances</span>
+                <span class="value">{{ chance }}</span>
+            </div>
+            <div class="header-item">
+                <span class="label">Winning Card</span>
+                <span class="value">{{ winnerCard }}</span>
+            </div>
+            <div class="header-item" v-if="isTimeAllowed">
+                <span class="label">Time Left</span>
+                <span class="value">{{ allowedTime }}</span>
+            </div>
+        </div>
     </div>
 </template>
+
 <script>
 export default {
     data() {
@@ -92,16 +104,69 @@ export default {
 </script>
 
 <style>
-.header {
-    display: flex;
-    flex-direction: row;
-    margin: 20px 0 0 55px;
-    column-gap: 50px;
+.header-container {
+    padding: 20px;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.header p {
-    border: solid 1px #575757;
-    padding: 6px;
-    border-radius: 5px;
+.header {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.header-item {
+    background: white;
+    padding: 15px 25px;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 160px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.header-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.label {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 500;
+}
+
+.value {
+    font-size: 1.2rem;
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    .header {
+        gap: 20px;
+    }
+
+    .header-item {
+        min-width: 140px;
+        padding: 12px 20px;
+    }
+
+    .label {
+        font-size: 0.8rem;
+    }
+
+    .value {
+        font-size: 1.1rem;
+    }
 }
 </style>

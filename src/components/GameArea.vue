@@ -1,14 +1,22 @@
 <template>
-    <div>
+    <div class="game-container">
         <div class="area">
-            <Card v-for="(card, index) in mixCards" :card="card" @click.native="handleCardSelect(card, index)" :key="card.id" />
+            <Card v-for="(card, index) in mixCards" 
+                  :card="card" 
+                  @click.native="handleCardSelect(card, index)" 
+                  :key="card.id"
+                  class="card-item" />
         </div>
-        <div class="btn-save" v-show="!isFinished">
-            <button @click="startGame">Start Game</button>&nbsp;
+        <div class="controls">
+            <button class="control-btn" @click="startGame" v-show="!isFinished">
+                <span class="btn-text">Start Game</span>
+            </button>
         </div>
         <div class="result" v-show="isFinished">
-            <h2>{{ result }}</h2>
-            <button class="result-btn" @click="startGame">Start Game</button>
+            <h2 class="result-text">{{ result }}</h2>
+            <button class="control-btn result-btn" @click="startGame">
+                <span class="btn-text">Start Game</span>
+            </button>
         </div>
     </div>
 </template>
@@ -104,46 +112,134 @@ export default {
 </script>
 
 <style>
+.game-container {
+    position: relative;
+    padding: 20px;
+    min-height: 60vh;
+}
+
 .area {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.card-item {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+.controls {
     display: flex;
-    margin: 20px 50px 30px 20px;
-    flex-wrap: wrap;
     justify-content: center;
+    margin-top: 30px;
+}
+
+.control-btn {
+    background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 6px rgba(99, 102, 241, 0.2);
+}
+
+.control-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(99, 102, 241, 0.3);
+}
+
+.control-btn:active {
+    transform: translateY(0);
 }
 
 .result {
-    position: absolute;
+    position: fixed;
     left: 0;
     right: 0;
     top: 0;
     bottom: 0;
-    z-index: 1;
     display: flex;
-    justify-content: center;
     flex-direction: column;
     align-items: center;
-    background: #858383;
-    opacity: 0.8;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+    animation: fadeIn 0.3s ease;
+}
+
+.result-text {
     color: white;
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    animation: slideIn 0.5s ease;
 }
 
 .result-btn {
-    background-color: rgb(76, 76, 76);
-    border-radius: 5px;
-    opacity: 1 !important;
+    background: linear-gradient(135deg, #34d399 0%, #059669 100%);
+    animation: bounceIn 0.5s ease 0.3s both;
 }
 
-.btn-save {
-    display: flex;
-    justify-content: center;
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
-.btn-save button {
-    border-radius: 9px;
-    border: solid 1px #858383
+@keyframes slideIn {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
-.btn-save button:hover {
-    background-color: #c7c3c3;
+@keyframes bounceIn {
+    0% {
+        transform: scale(0.3);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    70% {
+        transform: scale(0.9);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .area {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 15px;
+        padding: 15px;
+    }
+
+    .result-text {
+        font-size: 2rem;
+    }
+
+    .control-btn {
+        padding: 10px 25px;
+        font-size: 1rem;
+    }
 }
 </style>
