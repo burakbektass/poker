@@ -17,7 +17,7 @@ export default {
     props: ["card"],
     data() {
         return {
-            defaultImg: "public/default.jpg"
+            defaultImg: "/assets/default.jpg"
         }
     },
 }

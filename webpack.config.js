@@ -22,8 +22,7 @@ module.exports = {
         test: /\.vue$/,
         loader: 'vue-loader',
         options: {
-          loaders: {
-          }
+          loaders: {}
         }
       },
       {
@@ -35,9 +34,8 @@ module.exports = {
         test: /\.(png|jpg|gif|svg)$/,
         loader: 'file-loader',
         options: {
-          name: '[name].[ext]?[hash]',
-          outputPath: 'images/',
-          publicPath: '/'
+          name: '[name].[ext]',
+          outputPath: 'assets/'
         }
       }
     ]
@@ -59,8 +57,8 @@ module.exports = {
   devtool: '#eval-source-map',
   plugins: [
     new CopyWebpackPlugin([
-      { from: 'index.html', to: 'index.html' },
-      { from: 'public', to: 'public' }
+      { from: 'index.html' },
+      { from: 'public', to: 'assets' }
     ])
   ]
 }
