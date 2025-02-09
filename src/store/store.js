@@ -7,28 +7,28 @@ Vue.use(Vuex);
 export const store = new Vuex.Store({
   state: {
     cards: [
-      { id: 1, name: "Kupa Kizi", isOpened: false, img: "/assets/queen_of_hearts2.png" },
-      { id: 2, name: "Maça Kizi", isOpened: false, img: "/assets/queen_of_spades2.png" },
-      { id: 3, name: "Sinek Kizi", isOpened: false, img: "/assets/queen_of_clubs2.png" },
-      { id: 4, name: "Karo Kizi", isOpened: false, img: "/assets/queen_of_diamonds2.png" },
-      { id: 5, name: "Kupa Papazi", isOpened: false, img: "/assets/king_of_hearts2.png" },
-      { id: 6, name: "Maça Papazi", isOpened: false, img: "/assets/king_of_spades2.png" },
-      { id: 7, name: "Sinek Papazi", isOpened: false, img: "/assets/king_of_clubs2.png" },
-      { id: 8, name: "Karo Papazi", isOpened: false, img: "/assets/king_of_diamonds2.png" },
+      { id: 1, name: "Queen of Hearts", isOpened: false, img: "/assets/queen_of_hearts2.png" },
+      { id: 2, name: "Queen of Spades", isOpened: false, img: "/assets/queen_of_spades2.png" },
+      { id: 3, name: "Queen of Clubs", isOpened: false, img: "/assets/queen_of_clubs2.png" },
+      { id: 4, name: "Queen of Diamonds", isOpened: false, img: "/assets/queen_of_diamonds2.png" },
+      { id: 5, name: "King of Hearts", isOpened: false, img: "/assets/king_of_hearts2.png" },
+      { id: 6, name: "King of Spades", isOpened: false, img: "/assets/king_of_spades2.png" },
+      { id: 7, name: "King of Clubs", isOpened: false, img: "/assets/king_of_clubs2.png" },
+      { id: 8, name: "King of Diamonds", isOpened: false, img: "/assets/king_of_diamonds2.png" },
     ],
     cardNumbers: 4,
     chances: { 4: 1, 6: 2, 8: 3 },
     chance: 1,
     allowedTime: 8,
-    winnerCard: { id: 1, name: "Kupa Kizi", isOpened: false, img: "/assets/queen_of_hearts2.png" },
+    winnerCard: { id: 1, name: "Queen of Hearts", isOpened: false, img: "/assets/queen_of_hearts2.png" },
     isTimeAllowed: true,
     isVictory: false,
     isFinished: false,
     listedCards: [
-      { id: 1, name: "Kupa Kizi", isOpened: false, img: "/assets/queen_of_hearts2.png" },
-      { id: 2, name: "Maça Kizi", isOpened: false, img: "/assets/queen_of_spades2.png" },
-      { id: 3, name: "Sinek Kizi", isOpened: false, img: "/assets/queen_of_clubs2.png" },
-      { id: 4, name: "Karo Kizi", isOpened: false, img: "/assets/queen_of_diamonds2.png" }
+      { id: 1, name: "Queen of Hearts", isOpened: false, img: "/assets/queen_of_hearts2.png" },
+      { id: 2, name: "Queen of Spades", isOpened: false, img: "/assets/queen_of_spades2.png" },
+      { id: 3, name: "Queen of Clubs", isOpened: false, img: "/assets/queen_of_clubs2.png" },
+      { id: 4, name: "Queen of Diamonds", isOpened: false, img: "/assets/queen_of_diamonds2.png" }
     ]
 
   },
