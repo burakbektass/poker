@@ -11,9 +11,14 @@
     }
   ],
   "routes": [
+    { "handle": "filesystem" },
+    {
+      "src": "/images/(.*)",
+      "dest": "/images/$1"
+    },
     {
       "src": "/(.*)",
-      "dest": "/"
+      "dest": "/index.html"
     }
   ]
 } 
